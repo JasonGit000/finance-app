@@ -164,7 +164,7 @@ const App = () => {
           
           {/* Input Form */}
           <div className="lg:col-span-1 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-            <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+            <h3 className="text-lg font-semibold mb-4 flex items-center gap-2 text-slate-800">
               <Plus size={20} className="text-blue-500" />
               新增分析項目
             </h3>
@@ -174,7 +174,7 @@ const App = () => {
                 <input 
                   type="text"
                   placeholder="例如：Google 廣告"
-                  className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+                  className="w-full px-4 py-2 rounded-lg border border-slate-200 bg-white text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all placeholder-slate-400"
                   value={newItem.name}
                   onChange={e => setNewItem({...newItem, name: e.target.value})}
                 />
@@ -185,7 +185,7 @@ const App = () => {
                   <input 
                     type="number"
                     placeholder="金額"
-                    className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+                    className="w-full px-4 py-2 rounded-lg border border-slate-200 bg-white text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all placeholder-slate-400"
                     value={newItem.spend}
                     onChange={e => setNewItem({...newItem, spend: e.target.value})}
                   />
@@ -195,7 +195,7 @@ const App = () => {
                   <input 
                     type="number"
                     placeholder="預算"
-                    className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+                    className="w-full px-4 py-2 rounded-lg border border-slate-200 bg-white text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all placeholder-slate-400"
                     value={newItem.budget}
                     onChange={e => setNewItem({...newItem, budget: e.target.value})}
                   />
@@ -203,7 +203,7 @@ const App = () => {
               </div>
               <button 
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition-colors flex items-center justify-center gap-2"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition-colors flex items-center justify-center gap-2 shadow-sm"
               >
                 加入分析
               </button>
@@ -214,7 +214,7 @@ const App = () => {
           <div className="lg:col-span-2 space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Pie Chart */}
-              <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 h-80">
+              <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 h-80 text-slate-800">
                 <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
                   <PieIcon size={20} className="text-purple-500" />
                   支出類別佔比
@@ -236,14 +236,14 @@ const App = () => {
                     </Pie>
                     <Tooltip 
                       formatter={(value) => `$${value.toLocaleString()}`}
-                      contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
+                      contentStyle={{ backgroundColor: '#fff', borderRadius: '12px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
                     />
                   </PieChart>
                 </ResponsiveContainer>
               </div>
 
               {/* Bar Chart */}
-              <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 h-80">
+              <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 h-80 text-slate-800">
                 <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
                   <BarChart3 size={20} className="text-emerald-500" />
                   預算與實際對比
@@ -255,7 +255,7 @@ const App = () => {
                     <YAxis axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 12}} />
                     <Tooltip 
                       cursor={{fill: '#f8fafc'}}
-                      contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
+                      contentStyle={{ backgroundColor: '#fff', borderRadius: '12px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
                     />
                     <Legend />
                     <Bar name="實際支出" dataKey="spend" fill="#3B82F6" radius={[4, 4, 0, 0]} barSize={30} />
@@ -268,7 +268,7 @@ const App = () => {
         </div>
 
         {/* Detailed Table */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden text-slate-800">
           <div className="p-6 border-b border-slate-100 flex items-center justify-between">
             <h3 className="text-lg font-semibold">分析項目明細</h3>
             <div className="flex gap-2">
@@ -296,7 +296,7 @@ const App = () => {
                   <th className="px-6 py-4 text-center">操作</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-slate-100 bg-white">
                 {analyzedData.map((item) => (
                   <tr key={item.id} className="hover:bg-slate-50 transition-colors group">
                     <td className="px-6 py-4 font-medium text-slate-700">{item.name}</td>
@@ -335,7 +335,7 @@ const App = () => {
             </table>
           </div>
           {analyzedData.length === 0 && (
-            <div className="p-12 text-center text-slate-400">
+            <div className="p-12 text-center text-slate-400 bg-white">
               目前尚無分析數據，請從左側新增項目。
             </div>
           )}
